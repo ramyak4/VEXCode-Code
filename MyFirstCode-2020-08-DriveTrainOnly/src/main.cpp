@@ -36,9 +36,9 @@ vex::competition    Competition;
 
 //Drivetrain
 vex::motor  leftTopDriveMotor = vex::motor( vex:: PORT1);
-vex::motor  rightTopDriveMotor = vex::motor( vex:: PORT10);
-vex::motor  leftBottomDriveMotor = vex::motor( vex:: PORT10);
-vex::motor  rightBottomDriveMotor = vex::motor( vex:: PORT10);
+vex::motor  rightTopDriveMotor = vex::motor( vex:: PORT2);
+vex::motor  leftBottomDriveMotor = vex::motor( vex:: PORT3);
+vex::motor  rightBottomDriveMotor = vex::motor( vex:: PORT4);
 
 
 
@@ -64,7 +64,27 @@ void setup (void) {
 
 //The code for the autonomous period (when we get around to doing that)
 void auton (void) {
+  leftTopDriveMotor.setVelocity(100, vex::velocityUnits::pct);
+  rightTopDriveMotor.setVelocity(100, vex::velocityUnits::pct);
+  leftBottomDriveMotor.setVelocity(100, vex::velocityUnits::pct);
+  rightBottomDriveMotor.setVelocity(100, vex::velocityUnits::pct);
+  leftIntake.setVelocity(100, vex::velocityUnits::pct);
+  rightIntake.setVelocity(100, vex::velocityUnits::pct);
+  topIntake.setVelocity(100, vex::velocityUnits::pct);
 
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
+
+  // drive forward and stop
+  leftTopDriveMotor.spin(vex::directionType::rev);
+  rightTopDriveMotor.spin(vex::directionType::fwd);
+  leftBottomDriveMotor.spin(vex::directionType::rev);
+  rightBottomDriveMotor.spin(vex::directionType::fwd);
+  vex::task::sleep(1000);
+  leftTopDriveMotor.stop();
+  rightTopDriveMotor.stop();
+  leftBottomDriveMotor.stop();
+  rightBottomDriveMotor.stop();
 
 }
 
